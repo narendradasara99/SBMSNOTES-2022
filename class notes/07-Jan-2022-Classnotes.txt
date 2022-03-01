@@ -1,0 +1,77 @@
+Last session : Course Details & Course Content
+-------------------------------------------------
+
+Course Name : RestFul Services & Microservices
+Course Duration : 2 Months
+Class Timings : 9:30 PM - 10:45 PM IST
+Course Fee : 4,000 INR (Live classes + Daily Class Notes)
+Course Fee : 7,000 INR (Live classes + notes + videos - 6 months)
+-------------------------------------------------------------------------
+
+-> In today's world we are using so many services with the help of internet
+
+net banking
+upi transactions
+emails exchange
+online shopping
+food orders etc...
+
+
+-> The service we are using over the web are called as Webservices
+
+-> Webservices are used to develop distributed applications
+
+Q) What is a distributed application ? 
+
+-> If one app is communicating with another app then those apps are called as distributed apps.
+
+-> To develop distributed applications we are using webservices
+
+Q) What is a webservice ?
+-> Webservice is a technology which is used to develop distributed applications with intereoperability
+
+
+Q) What is intereoperability ?
+-> Irrespective of operating system and irrespective of programming languages if applications are communicating then those applications are called as intereoperable applications.
+
+		java app <----------> .net app
+
+		.net app <----------> python app
+
+		angular app <---------> java app
+
+		php app <------------> java app
+--------------------------------------------------------------------------
+
+-> We are using webservices to develop distributed applications with intereoperability
+
+
+-> Webservices are divided into 2 types
+		
+	1) SOAP Webservices (Outdated in market)-xml based
+	2) RESTful Services (Trending in market)-multiple formats
+-------------------------------------------------------------------------
+-> In our course we will learn RESTFul Services development with Spring Boot
+-------------------------------------------------------------------------
+
+What is Fullstack Development ?
+
+	Front End + Back End = Fullstack
+
+-> For front end development people are using angular / react js
+
+-> In backend development we will develop rest apis.
+
+------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+

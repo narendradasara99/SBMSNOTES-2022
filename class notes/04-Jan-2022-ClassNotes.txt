@@ -1,0 +1,382 @@
+Today's session : Form based application development using Spring Boot + Thymeleaf
+===============================================================================================
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.6.2</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>in.ashokit</groupId>
+	<artifactId>24-SB-Web-MVC-Thymeleaf-Form-App</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>24-SB-Web-MVC-Thymeleaf-Form-App</name>
+	<description>Demo project for Spring Boot</description>
+	<properties>
+		<java.version>1.8</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
+-----------------------------------------------------------------------------------------------
+package in.ashokit.binding;
+
+public class Product {
+
+	private Integer pid;
+	private String pname;
+	private Double price;
+
+	public Integer getPid() {
+		return pid;
+	}
+
+	public void setPid(Integer pid) {
+		this.pid = pid;
+	}
+
+	public String getPname() {
+		return pname;
+	}
+
+	public void setPname(String pname) {
+		this.pname = pname;
+	}
+
+	public Double getPrice() {
+		return price;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+
+	@Override
+	public String toString() {
+		return "Product [pid=" + pid + ", pname=" + pname + ", price=" + price + "]";
+	}
+
+}
+-----------------------------------------------------------------------------------------------
+package in.ashokit.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import in.ashokit.binding.Product;
+
+@Controller
+public class ProductController {
+
+	@GetMapping("/product")
+	public String loadForm(Model model) {
+		Product productObj = new Product();
+		model.addAttribute("product", productObj);
+		return "index";
+	}
+
+	@PostMapping("/saveProduct")
+	public String saveProduct(Product product, Model model) {
+		System.out.println(product);
+		model.addAttribute("product", product);
+		return "data";
+	}
+}
+-----------------------------------------------------------------------------------------------
+
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<form th:action="@{/saveProduct}" th:object="${product}" method="POST">
+		<table>
+			<tr>
+				<td>Product Id:</td>
+				<td><input type="text" th:field="*{pid}" /></td>
+			</tr>
+			<tr>
+				<td>Product Name:</td>
+				<td><input type="text" th:field="*{pname}" /></td>
+			</tr>
+			<tr>
+				<td>Product Price:</td>
+				<td><input type="text" th:field="*{price}" /></td>
+			</tr>
+
+			<tr>
+				<td></td>
+				<td><input type="submit" value="Save" /></td>
+			</tr>
+		</table>
+	</form>
+
+</body>
+</html>
+-----------------------------------------------------------------------------------------------
+
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	Product Id :
+	<p th:text="${product.pid}" />
+
+	Product Name :
+	<p th:text="${product.pname}" />
+
+	Product Price:
+	<p th:text="${product.price}" />
+
+	<a href="product">Go Back</a>
+
+</body>
+</html>
+-----------------------------------------------------------------------------------------------
+Spring Boot + Thymeleaf + Form validations - Example
+-----------------------------------------------------------------------------------------------
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.6.2</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>in.ashokit</groupId>
+	<artifactId>25-SB-Web-MVC-Form-Validations</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>25-SB-Web-MVC-Form-Validations</name>
+	<description>Demo project for Spring Boot</description>
+	<properties>
+		<java.version>1.8</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
+-----------------------------------------------------------------------------------------------
+package in.ashokit.binding;
+
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+public class Person {
+
+	@NotNull
+	@Size(min = 3, max = 8)
+	private String name;
+	
+	@NotNull
+	@Min(18)
+	private Integer age;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Integer getAge() {
+		return age;
+	}
+
+	public void setAge(Integer age) {
+		this.age = age;
+	}
+
+	@Override
+	public String toString() {
+		return "Person [name=" + name + ", age=" + age + "]";
+	}
+
+}
+-----------------------------------------------------------------------------------------------
+package in.ashokit.controller;
+
+import javax.validation.Valid;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import in.ashokit.binding.Person;
+
+@Controller
+public class PersonController {
+
+	@GetMapping("/person")
+	public String displayForm(Model model) {
+		Person personObj = new Person();
+		model.addAttribute("person", personObj);
+		return "index";
+	}
+
+	@PostMapping("/savePerson")
+	public String savePerson(@Valid Person person, BindingResult result, Model model) {
+		System.out.println(person);
+
+		if (result.hasErrors()) {
+			return "index";
+		}
+
+		model.addAttribute("msg", person.getName() + " record saved successfully");
+		return "data";
+	}
+
+}
+-----------------------------------------------------------------------------------------------
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<form th:action="@{/savePerson}" th:object="${person}" method="POST">
+		<table>
+			<tr>
+				<td>Name :</td>
+				<td><input type="text" th:field="*{name}" /></td>
+				<td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name
+					Error</td>
+			</tr>
+			<tr>
+				<td>Age :</td>
+				<td><input type="text" th:field="*{age}" /></td>
+				<td th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Age
+					Error</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="submit" value="Save" /></td>
+			</tr>
+		</table>
+	</form>
+
+</body>
+</html>
+-----------------------------------------------------------------------------------------------<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<p th:text="${msg}" />
+	
+	<a href="person">Go Back</a>
+	
+</body>
+</html>
+----------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

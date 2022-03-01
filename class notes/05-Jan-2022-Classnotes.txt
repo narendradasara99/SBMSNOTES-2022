@@ -1,0 +1,75 @@
+=> We developed form based application using thymeleaf
+
+=> We have implemented form validations using bean validation api
+------------------------------------------------------------------------
+
+-> To develop web application using spring boot we are using web starter
+
+-> When we add this web-starter dependency we are getting tomcat as default embedded container
+
+Q) Can we change default container in spring boot ?
+Ans) Yes, we can change from tomcat to jetty
+-----------------------------------------------------------------------------------------------
+Configuring Jetty server as default embedded container in spring boot
+-----------------------------------------------------------------------------------------------
+
+1) Exclude tomcat-starter from web-starter
+
+2) Add jetty-starter in pom.xml file
+
+-----------------------------------------------------------------------------------------------
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jetty</artifactId>
+		</dependency>
+-----------------------------------------------------------------------------------------------
+
+Q) Can we deploy spring boot application into external server ?
+
+Ans) Yes, we can deploy by packaing spring boot application as war file
+
+
+-> Check <packaging> tag type in pom.xml file. It should be having war like below
+
+	<packaging>war</packaging>
+
+Note: If <packaging/> tag is not available then add it in pom.xml file
+
+Note: Check project build path, it should contain jdk
+
+-> Right click on project -> Run as -> Maven Build -> Enter goals as clean package -> Apply -> Execute
+
+-> Once build is succes, refresh the project and check target folder (war file will be created)
+
+-> To customize war file name add <finalName>name<fileName> tag in build tag in pom.xml file
+
+----------------------------------------------------------------------------------------------
+
+clean package
+
+-> clean goal will delete target folder (.class files will be available in target folder)
+
+-> package goal will execute compile goal internally
+
+-> To compile java classes we need java compiler which will be available in jdk
+
+-> Our project build path should have jdk
+----------------------------------------------------------------------------------------------
+
+
+
+
+
+
+

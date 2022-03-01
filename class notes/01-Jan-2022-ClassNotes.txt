@@ -1,0 +1,198 @@
+Steps to develop Book Store application with layered architecture
+---------------------------------------------------------------------
+1) Create spring starter project with below dependencies
+
+		a) spring-boot-starter-web
+		b) spring-boot-starter-datajpa
+		c) H2 (Embedded Database)
+		d) spring-boot-devtools
+		e) tomact-embed-jasper
+		f) JSTL
+
+2) Configure below properties in application.properties file
+
+		a) embedded server port number
+		b) datsource properties
+		c) view resolver
+
+3) Create Entity & Repository for DB communication
+
+4) Create Service interface & implementation
+
+5) Create Controller with required methods
+
+6) Create view files
+-------------------------------------------------------------------------
+server.port=9090
+
+spring.mvc.view.prefix=/pages/
+spring.mvc.view.suffix=.jsp
+
+spring.datasource.username=sa
+spring.datasource.password=sa
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.datasource.driver-class-name=org.h2.Driver
+-------------------------------------------------------------------------
+@Entity
+@Table(name = "BOOK_DTLS")
+public class Book {
+
+	@Id
+	@GeneratedValue
+	@Column(name = "BOOK_ID")
+	private Integer id;
+
+	@Column(name = "BOOK_NAME")
+	private String name;
+
+	@Column(name = "BOOK_PRICE")
+	private String price;
+
+	@Column(name = "BOOK_AUTHOR")
+	private String author;
+
+	//setters & getters
+-------------------------------------------------------------------------
+public interface BookRepository extends JpaRepository<Book, Integer> {
+
+}
+-------------------------------------------------------------------------
+public interface BookService {
+
+	public boolean saveBook(Book book);
+
+	public List<Book> getAllBooks();
+
+}
+--------------------------------------------------------------------------@Service
+public class BookServiceImpl implements BookService {
+
+	@Autowired
+	private BookRepository bookRepo;
+
+	@Override
+	public boolean saveBook(Book book) {
+		Book save = bookRepo.save(book);
+		if (save.getId() != null) {
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public List<Book> getAllBooks() {
+		return bookRepo.findAll();
+	}
+}
+--------------------------------------------------------------------------
+@Controller
+public class BookController {
+
+	@Autowired
+	public BookService bookService;
+
+	@GetMapping("/book")
+	public String loadForm(Model model) {
+		model.addAttribute("book", new Book());
+		return "index";
+	}
+
+	@PostMapping("/saveBook")
+	public String saveBook(Book book, Model model) {
+		boolean status = bookService.saveBook(book);
+		if (status) {
+			model.addAttribute("success", "Book Saved Successfully");
+		} else {
+			model.addAttribute("failure", "Failed to save book");
+		}
+		return "index";
+	}
+
+	@GetMapping("/viewBooks")
+	public String viewBooks(Model model) {
+		List<Book> allBooks = bookService.getAllBooks();
+		model.addAttribute("books", allBooks);
+		return "data";
+	}
+}
+--------------------------------------------------------------------------
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<font color='green'>${success}</font>
+	<font color='red'>${failure}</font>
+
+	<form:form action="saveBook" modelAttribute="book" method="POST">
+		<table>
+			<tr>
+				<td>Book Name :</td>
+				<td><form:input path="name" /></td>
+			</tr>
+			<tr>
+				<td>Book Price :</td>
+				<td><form:input path="price" /></td>
+			</tr>
+			<tr>
+				<td>Book Author :</td>
+				<td><form:input path="author" /></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="submit" value="Save" /></td>
+			</tr>
+		</table>
+	</form:form>
+	
+	<a href="viewBooks">View All Books</a>
+</body>
+</html>
+--------------------------------------------------------------------------
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<a href="book">+Add New Book</a>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Price</th>
+				<th>Author Name</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach items="${books}" var="book">
+				<tr>
+					<td>${book.name}</td>
+					<td>${book.price}</td>
+					<td>${book.author}</td>
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table>
+</body>
+</html>
+-------------------------------------------------------------------------
+
+
+
+
+

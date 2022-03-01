@@ -1,0 +1,40 @@
+RESTFul Services Introduction
+-------------------------------------------------------------------------
+
+-> RESTFul services we are going to use to develop distributed applications with intereoperability
+
+-> The applications which are communicating with other applications are called as distributed application.
+
+		passport app <-------> aadhar app
+
+-> Irrespective of the platform and irrespective of the programming language if applications are communicating then we can call those applications as intereoperable applications
+
+		java app <---------> .net app
+
+		.net app <--------> python app
+
+		python <----------> salesforce app
+--------------------------------------------------------------------------
+RESTFul Services Architecture
+-------------------------------------------------------------------------
+
+-> In this architecture 2 actors will be available
+
+		1) Resource/Provider app
+		2) Client/Consumer app
+
+-> The application which is providing business services to other applications is called as Resource application.
+
+-> The application which is accessing services from other application is called as Client app
+
+------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,94 @@
+	RestFul services & Microservices with Spring Boot
+	==================================================
+
+Ashok (9 years exp in IT industry)
+Working for Product Based company as Tech Lead in Hyd location
+I have 6 years exp in training field
+----------------------------------------------------------------------
+
+Pre-Requisites
+--------------
+Core Java
+Adv Java
+SQL Basics
+
+Spring Core Module
+Spring Boot Basics
+
+Course Content
+----------------
+
+Part-1 (Restful Services)
+--------------------------
+What is distributed application
+Why we need to go for distributed applications
+Introduction to RESTFul Services
+REST Principles
+REST Architecture
+HTTP Protocol
+HTTP Methods (GET, POST, PUT & DELETE)
+HTTP Status Codes & Status Messages
+XML Introduction
+JAX-B
+Xml To java conversion
+Java to xml version
+JSON
+Jackson API & GSON API
+Java obj to Json conversion
+Json to java obj conversion
+REST API development with Spring Boot
+REST Resource development
+Query Params
+Path Params
+POSTMAN
+Swagger
+MediaTypes (Consumes & Produces)
+REST Client Development
+Rest Template
+WebClient
+Reactive Programming
+Exception Handling
+Security (OAuth & JWT)
+
+
+Part-2 (Microservices)
+----------------------
+Monolith Architecture
+Limitations of Monolith
+Microservices Introduction
+Advantages of Microservices
+Challenges with Microservices
+Microservices Architecture
+Service Registry (Eureka Server)
+Api Gateway (zuul proxy)
+Interservice Communication (Feign Client)
+Load Balancer (Ribbon)
+Circuity Breaker with Resillience4j
+Actuators
+Admin Server & Admin Client
+Distributed Logging (Zipkin & Sleuth)
+Spring Boot with Apache Kafka Integration
+Spring Boot with Redis cache Integration
+Spring Boot with Docker Integration
+Spring Boot with Mongo DB integration
+Spring Boot with Angular Integration
+
+
+Course Duration : 2 Months
+Class Timings : 9:30 PM to 10:45 PM IST (Mon-Sat)
+Course Fee : 4000 INR (Live classes + Daily Class Notes)
+Course Fee : 7000 INR (Live Classes + Daily Notes + Videos - 6 months)
+
+
+
+
+
+
+
+
+
+
+
+
+
+

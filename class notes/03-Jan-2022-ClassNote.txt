@@ -1,0 +1,114 @@
+In Last Session : We revised Web MVC Concepts & Doubts cclarified
+---------------------------------------------------------------------------------------------
+Today's session : Thymleaf
+--------------------------------------------------------------------------------------------
+
+-> We used JSP as a presentation technology in our spring web mvc based applications
+
+-> JSP can't be executed in browser directley
+
+-> When the request comes to JSP then internally JSP will be converted to Servlet and that servlet will send response to browser
+
+-> When we use JSP for presentation then burden will be increased on server because every JSP should be converted into Servlet to produce the response.
+
+---------------------------------------------------------------------------------------------
+
+-> To overcome problems of JSP we can use Thymeleaf as a presentation technology
+
+-> Thymleaf is a template engine that can be used in HTML pages directley
+
+-> HTML pages can be executed in browser directley
+
+-> In general, HTML pages are used for static data. If we use thymleaf in HTML then we can add dynamic nature to HTML pages.
+
+---------------------------------------------------------------------------------------------
+
+-> We can develop spring boot application with thymleaf as a presentation technology
+
+-> To use Thymleaf in spring boot we have a starter
+
+		spring-boot-starter-thymleaf
+
+----------------------------------------------------------------------------------------------
+Procedure to develop spring boot application with thymeleaf
+---------------------------------------------------------------------------------------------
+
+1) Create Spring Starter Project with below dependencies
+
+		a) web-starter
+		b) thymeleaf-starter
+		c) devtools
+
+2) Create Controller with required methods
+
+3) Create Theymeleaf templates in src/main/resources/templates folder (file extension .html)
+
+4) Configure Embedded Server Port number in application.properties file
+
+5) Run the application and test it
+
+Note: No need to configure view resolver because Spring Boot will detect theymeleaf template files and will process them
+-----------------------------------------------------------------------------------------------
+<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+---------------------------------------------------------------------------------------------
+@Controller
+public class WelcomeController {
+
+	@GetMapping("/welcome")
+	public String welcomeMsg(@RequestParam("name") String name, Model model) {
+		String msgTxt = name + ", Welcome to Ashok IT..!!";
+		model.addAttribute("msg", msgTxt);
+		return "index";
+	}
+}
+-----------------------------------------------------------------------------------------------
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<p th:text=${msg} />
+
+</body>
+</html>
+----------------------------------------------------------------------------------------------
+server.port=9090
+--------------------------------------------------------------------------------------------
+
+Today's Assignment: Develop a form based application using thymeleaf.
+
+Form Fields
+-----------
+Product ID, Product Name, Product price
+
+-> When user submit the form capture form data and display that in another page
+----------------------------------------------------------------------------------------------
+
+
+
+

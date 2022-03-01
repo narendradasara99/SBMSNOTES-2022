@@ -1,0 +1,51 @@
+Last session : Developed Layered Architecture Based Application
+--------------------------------------------------------------------------
+
+-> In realtime every application will be developed using layered architecture only
+
+-> If we use layered architecture then our application will be loosely coupled
+
+-> In Layered Architecture we can see below layers/tiers in the application
+
+		1) Presentation layer (UI)
+		2) Web Layer (Controllers)
+		3) Business/Service Layer (business logic)
+		4) Persistence Layer (DB communication logic)
+--------------------------------------------------------------------------
+-> Spring Web MVC
+-> Advantages Of Spring Web MVC
+-> Spring Web MVC Architecture
+-> DispatcherServlet (FrontController)
+-> HandlerMapper
+-> Controller/RequestHandler
+-> ModelAndView (data & view file name)
+-> Model (I)
+-> ViewResolver
+-> View
+-> Query Parameter (@RequestParam)
+-> Path Parameter (@PathVariable)
+-> Query Param Vs Path Param
+-> Form Tag Library
+-> Form Binding
+-> Login Form App developement
+-> Registration Form App development
+-> Student Registration Form development
+-> Layered Application development (Book Store App)
+-----------------------------------------------------------------------------------
+Students Doubts clarified
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

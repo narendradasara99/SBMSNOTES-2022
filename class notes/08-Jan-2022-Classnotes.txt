@@ -1,0 +1,79 @@
+RESTFul Services & Microservices
+--------------------------------------------------------------------------
+
+-> By using java we can build/develop below types of applications
+
+		1) stand-alone applications
+		2) web applications
+		3) distributed applications
+
+-> The application which is accessible in only one computer is called as standlone application. We have to install standalone application in our computer.
+
+	Ex: calc, notepad++, eclipse etc....
+
+-> The application which is accessible by multiple users at a time with internet support is called as Web application.
+
+	Ex: gmail.com, facebook.com, irctc, ashokit.in
+
+Note: Web applications are meant for customer to business communication 
+
+
+-> The application which is communicating with another application is called as distributed application.
+
+	Ex:
+
+		passport app <----------> aadhar app
+
+		swiggy <-----------------> banking apps
+
+		gpay/phonepay <----------> banking apps
+
+		makemytrip <------------> airlines
+
+		yatra <--------------> irctc app
+
+Note: Distributed applications are meant for business to business communication (B 2 B)
+-------------------------------------------------------------------------
+Q) Why we need to develop distributed applications ?
+
+Ans) To re-use business services we are developing distributed applications.
+
+-------------------------------------------------------------------------
+
+-> By using RESTFul services we can develop distributed applications.
+
+
+-> In distributed applications we can see 2 actors
+
+		1) Resource / Producer
+		2) Client / Consumer
+
+
+-> Resource / Producer means who will provide the service
+
+-> Client / Consumer means who will access the services
+
+--------------------------------------------------------------------------
+
+-> All programming languages supports for RESTFul services development.
+
+-> In this course we will learn how to develop restful services using java
+--------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
